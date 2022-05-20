@@ -30,7 +30,7 @@ router.post("/Users", async (req, res) => {
         res.json(newUser);
       });
     } else {
-      res.json("Number already exists!");
+      res.status(500).send("Failure");
     }
   });
 });

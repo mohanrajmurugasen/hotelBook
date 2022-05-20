@@ -16,6 +16,7 @@ router.post("/Users", async (req, res) => {
     mobile: req.body.mobile,
     people: req.body.people,
     time: req.body.time,
+    table: req.body.table,
   };
 
   userModel.findOne({ mobile: req.body.mobile }, (err, result) => {
@@ -26,7 +27,7 @@ router.post("/Users", async (req, res) => {
         const newUser = new userModel(users);
         await newUser.save();
 
-        res.json(users);
+        res.json(newUser);
       });
     } else {
       res.json("Number already exists!");
@@ -82,6 +83,7 @@ router.put("/UpdateUsersById/:id", (req, res) => {
       result.mobile = req.body.mobile;
       result.people = req.body.people;
       result.time = req.body.time;
+      result.table = req.body.table;
 
       result
         .save()
